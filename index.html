@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- 1. Create container -->
+    <div id="container"></div>
+
+    <script src="https://gw.alipayobjects.com/os/lib/antv/g6/5.0.0/dist/g6.min.js"></script>
+
+    <script>
+      // 2. prepare data
+      const data = {
+        nodes: [
+          {
+            /** Unique identifier of the node, required, can be a string or number */
+            id: 'node1',
+            /** Custom data of the node, optional */
+            data: { name: 'Circle1' },
+          },
+          { id: 'node2', data: { name: 'Circle2' } },
+        ],
+        edges: [
+          {
+            /** Unique identifier of the edge, optional, can be a string or number */
+            id: 'edge1',
+            /** Source node id of the edge, required */
+            source: 'node1',
+            /** Target node id of the edge, required */
+            target: 'node2',
+            /** Custom data of the edge, optional */
+            data: {},
+          },
+        ],
+      };
+
+      // 3. Create G6 instance
+      const graph = new Graph({
+        /** Canvas container, required, can be the container id or HTML node object */
+        container: 'container',
+        /** Canvas width, optional, adapt to the container width by default */
+        width: 800,
+        /** Canvas height, optional, adapt to the container height by default */
+        height: 500,
+        /** Data, optional, you can also configure it later through graph.read(data) */
+        data: data,
+        /** Enabled interactions, optional */
+        modes: {
+          default: ['drag-node', 'drag-canvas', 'zoom-canvas'],
+        },
+      });
+    </script>
+  </body>
+</html>
